@@ -21,13 +21,13 @@ const String MSG_END_TOKEN = "@MESSAGE END@";
 
 void setup() {
   lc.shutdown(0, false);
-  lc.setIntensity(0, 1);
+  lc.setIntensity(0, 0);
   lc.clearDisplay(0);
 }
 
 void loop() {
   scrolling_display_msg("HI THERE FRIEND");
-  static_display_msg("HI THERE FRIEND");
+  /*static_display_msg("HI THERE FRIEND");*/
 }
 
 /* Displays message scrolling across the matrix. */
