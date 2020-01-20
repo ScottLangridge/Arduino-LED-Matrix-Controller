@@ -1,6 +1,6 @@
 typedef struct {
   String token;
-  byte binCode[8];
+  byte bincode[8];
 } symbol;
 
 /* Set this to the number of symbols in the array below. (Hint: Subtract ten from the line number of the last element)! */
