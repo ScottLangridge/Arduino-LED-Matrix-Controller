@@ -26,7 +26,7 @@ void setup() {
 }
 
 void loop() {
-  scrolling_display_msg("HI THERE FRIEND");
+  scrolling_display_msg("@happy@ @sad@");
   /*static_display_msg("HI THERE FRIEND");*/
 }
 
