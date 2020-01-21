@@ -26,8 +26,8 @@ void setup() {
 }
 
 void loop() {
-  scrolling_display_msg("@happy@ @sad@");
-  /*static_display_msg("HI THERE FRIEND");*/
+  /* scrolling_display_msg("TesT"); */
+  scrolling_display_msg("TesT");
 }
 
 /* Displays message scrolling across the matrix. */
@@ -97,6 +97,14 @@ void static_display_msg(String msg) {
 void scrolling_display_bincodes(String tokens[2]) {
   /* Get the bincodes for each individual char. */
   byte bincodes[2][8];
+
+  /* (Default to error bincode so that if the token isn't found error is displayed) */
+  for (int i = 0; i < 2; i++) {
+    for (int x = 0; x < 8; x++) {
+      bincodes[i][x] = error_bincode[x];
+    }
+  }
+
   for (int i = 0; i < SYMBOL_COUNT; i++) {
     if (symbols[i].token == tokens[0]) {
       for (int x = 0; x < 8; x++) {
@@ -106,6 +114,11 @@ void scrolling_display_bincodes(String tokens[2]) {
     if (symbols[i].token == tokens[1]) {
       for (int x = 0; x < 8; x++) {
         bincodes[1][x] = symbols[i].bincode[x];
+      }
+    }
+    if (symbols[i].token == "@error@") {
+      for (int x = 0; x < 8; x++) {
+        error_bincode[x] = symbols[i].bincode[x];
       }
     }
   }
@@ -126,8 +139,10 @@ void static_display_bincode(String token) {
   for (int i = 0; i < SYMBOL_COUNT; i++) {
     if (symbols[i].token == token) {
       display_bincode(symbols[i].bincode);
+      return;
     }
   }
+  display_bincode(error_bincode);
 }
 
 /* Displays an array of bytes on the matrix as rows. */

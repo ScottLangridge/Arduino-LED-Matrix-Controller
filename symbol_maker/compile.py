@@ -1,13 +1,14 @@
 with open('symbol_maker.csv', 'r') as f:
-    raw = f.readlines()[1:]
+    raw = f.readlines()
+    raw[0] = raw[0].lstrip('ï»¿')
 
 glyphs = []
-glyph_name = "none"
-while glyph_name != "\n":
+glyph_name = None
+while(glyph_name != ""):
     glyph_rows = []
     for i in range(8):
         if i == 0:
-            glyph_name = raw[0].split(',')[-1]
+            glyph_name = raw[0].split(',')[-1].strip('\n')
 
         line = raw[i].split(',')
         binline = 'B'
